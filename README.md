@@ -1,4 +1,4 @@
-# Sage - Market Intelligence Dashboard
+# Sage – AI-Powered Market Intelligence for App & D2C Growth
 ![Sage_interface](sage/assets/SC1.png)
 > *Unlock the power of AI to analyze app store trends and D2C eCommerce performance.*
 Welcome to **Sage**, an intelligent market intelligence tool built to help product managers, marketers, and data analysts make faster, smarter decisions using real-time data from Google Play Store, App Store, and D2C e-commerce platforms.

@@ -1,0 +1,14 @@
+{
+    "output1": {
+        "type": "Ad Headline",
+        "content": "Boost Your Wellness!"
+    },
+    "output2": {
+        "type": "SEO Meta Description",
+        "content": "Discover premium supplements, unique home decor, and personalized astrology services. Elevate your life with our curated collection. Shop now!"
+    },
+    "output3": {
+        "type": "Product Detail Page (PDP) Text",
+        "content": "Unlock your full potential with [Product Name], a meticulously crafted supplement designed to support [Specific Benefit, e.g., energy levels, immune health]. Made with premium ingredients and backed by science, [Product Name] helps you achieve your wellness goals. Experience the difference today!"
+    }
+}

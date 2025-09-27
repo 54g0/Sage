@@ -7,6 +7,4 @@ fastapi
 uvicorn
 langgraph
 langchain
-openai
-google-generative-ai
 langchain-google-genai

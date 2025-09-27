@@ -1,8 +1,6 @@
 # Sage - Market Intelligence Dashboard
-
+![Sage_interface](sage/assets/SC1.png)
 > *Unlock the power of AI to analyze app store trends and D2C eCommerce performance.*
-![Sage_interface](sage/assets/Screenshot from 2025-09-27 13-14-42.png)
-
 Welcome to **Sage**, an intelligent market intelligence tool built to help product managers, marketers, and data analysts make faster, smarter decisions using real-time data from Google Play Store, App Store, and D2C e-commerce platforms.
 
 With Sage, you can:
@@ -15,7 +13,7 @@ With Sage, you can:
 Built with Streamlit, LangChain, and Gemini, Sage turns raw data into actionable business intelligence — all in one clean, interactive dashboard.
 
 ---
-![Sage_interface1](sage/assets/Screenshot from 2025-09-27 13-14-50.png)
+![Sage_interface1](sage/assets/SC2.png)
 ##  What It Does
 
 Sage combines:

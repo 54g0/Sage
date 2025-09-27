@@ -9,7 +9,7 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash",api_key=GEMINI_API_KEY)
 def get_analysis_from_D2C():
-    path = "/home/egg/Documents/Sage/data/raw/Kasparro_Phase5_D2C_Synthetic_Dataset.xlsx"
+    path = "data/raw/Kasparro_Phase5_D2C_Synthetic_Dataset.xlsx"
     d2c_df = pd.read_excel(path)
     d2c_df['cac'] = d2c_df['spend_usd'] / d2c_df['first_purchase']
     d2c_df['roas'] = d2c_df['revenue_usd'] / d2c_df['spend_usd']

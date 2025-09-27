@@ -23,7 +23,8 @@ if "d2c_analysis" not in st.session_state:
     st.session_state.d2c_analysis = None
 if "selected_category" not in st.session_state:
     st.session_state.selected_category = None
-
+if "report_generated" not in st.session_state:
+    st.session_state.report_generated = False
 # Custom CSS for better design
 st.markdown("""
 <style>
@@ -78,24 +79,27 @@ with col3:
     custom_query_1 = st.text_input("App Store Genre (e.g., 'gaming')", "")
 
 # Generate App Insights
-if st.button("🚀 Generate App Insights"):
+if st.button("Generate App Insights"):
     with st.spinner("Analyzing Google Play Store data..."):
         try:
             
-            insights, llm_response = get_insights(selected_category, custom_query, custom_query_1)
+            insights, llm_response ,report= get_insights(selected_category, custom_query, custom_query_1)
             st.session_state.app_insights = llm_response
+            st.session_state.report_generated = report
             st.session_state.selected_category = selected_category
         except Exception as e:
-            st.error(f"❌ Error: {e}")
+            st.error(f"Error: {e}")
 
 # Display App Insights
 if st.session_state.app_insights:
-    st.subheader("📈 App Store Insights")
+    st.subheader(" App Store Insights")
     st.markdown(f"<div style='background-color:black; padding:15px; border-radius:8px; border-left:4px solid #4a90e2;'>{st.session_state.app_insights}</div>", unsafe_allow_html=True)
+if st.session_state.report_generated:
+    st.subheader("Comprehensive Report")
+    st.markdown(f"<div style='background-color:black; padding:15px; border-radius:8px; border-left:4px solid #e74c3c;'>{st.session_state.report_generated}</div>", unsafe_allow_html=True)
 
-# Display D2C Analysis
 if st.session_state.d2c_analysis:
-    st.subheader("💼 D2C eCommerce Analysis")
+    st.subheader("D2C eCommerce Analysis")
     st.markdown(f"<div style='background-color:black; padding:15px; border-radius:8px; border-left:4px solid #e74c3c;'>{st.session_state.d2c_analysis}</div>", unsafe_allow_html=True)
 
 # Footer

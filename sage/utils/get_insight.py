@@ -10,9 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 RAPIDAPI_KEY = os.getenv("RAPIDAPI_KEY")
-data_dir = "data/processed/google_play_cleaned.csv"
-out_dir = "sage/outputs"
-os.makedirs(out_dir, exist_ok=True)
+data_dir = "sage/app/data/processed/google_play_cleaned.csv"
 ingestor = AppStoreIngestor()
 def get_insights(selected_category, custom_query, custom_query_1):
     gpd = pd.read_csv(data_dir)
@@ -31,25 +29,10 @@ def get_insights(selected_category, custom_query, custom_query_1):
     llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", api_key=os.getenv("GEMINI_API_KEY"))
     llm_response = llm.invoke(prompt)
     llm_response_1 = llm_response
-    llm_response_2 = llm_response
-    try:
-        parsed_response = json.loads(llm_response_1.content)
-        json_filename = os.path.join(out_dir, f"insights_{selected_category.lower().replace(' ', '_')}.json")
-        with open(json_filename, "w") as f:
-            json.dump(parsed_response, f, indent=2)
-        print(f"✅ Saved JSON to: {json_filename}")
-    except Exception as e:
-        text_filename = os.path.join(out_dir, f"insights_{selected_category.lower().replace(' ', '_')}.txt")
-        with open(text_filename, "w") as f:
-            f.write(llm_response.content)
-        print(f"📝 Saved raw response to: {text_filename} (not valid JSON)")
-
     prompt_2 = f"generate a comprehensive market intelligence report based on these insights: {insights}. the response must be in markdown format."
     llm_response_3 = llm.invoke(prompt_2)
-    with open(f"{out_dir}/market_intelligence_report_{selected_category.lower().replace(' ', '_')}.md", "w") as f:
-        f.write(llm_response_3.content)
-    return insights,llm_response_2.content
+    return insights,llm_response_1.content,llm_response_3.content
 
 if __name__ == "__main__":
-    insights, llm_response = get_insights("COMICS", "top-free", "books")
-    print(llm_response) 
+    insights, llm_response_1, llm_response_3 = get_insights("COMICS", "top-free", "books")
+    print(llm_response_1)
